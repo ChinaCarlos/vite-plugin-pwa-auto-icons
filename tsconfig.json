@@ -3,7 +3,7 @@
     "target": "ES5",
     "module": "ESNext", // 让 Rollup 处理模块化
     "lib": ["ESNext", "ES5"],
-    "sourceMap": true, // 生成 source maps
+    "sourceMap": false, // 生成 source maps
     "strict": true,
     "esModuleInterop": true, // 使 CommonJS 和 ES 模块互操作
     "skipLibCheck": true,

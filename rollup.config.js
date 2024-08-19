@@ -30,14 +30,14 @@ export default [
             {
                 dir: 'es',
                 format: 'esm',
-                sourcemap: true,
+                sourcemap: false,
                 preserveModules: false,
                 exports: 'auto',
             },
             {
                 dir: 'cjs',
                 format: 'cjs',
-                sourcemap: true,
+                sourcemap: false,
                 preserveModules: false,
                 exports: 'auto',
             },
