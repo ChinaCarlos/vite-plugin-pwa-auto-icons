@@ -102,7 +102,7 @@ class PwaAutoIconPlugin implements Plugin {
             }
 
             currentImgSharp
-                .toFile(outImgPath) // 保存文件
+                .toFile(outImgPath)
                 .then(file => {
                     console.log(`Saved: ${fileName}`, Number(file.size / 1024).toFixed(2) + 'kb');
                 })
@@ -114,14 +114,12 @@ class PwaAutoIconPlugin implements Plugin {
 
     buildStart() {
         const outDirPath = path.join(cwd, PwaAutoIconPlugin.outDir);
-        // 创建输出目录
         if (fs.existsSync(outDirPath)) {
             fs.rmSync(outDirPath, { recursive: true, force: true });
             fs.mkdirSync(outDirPath);
         } else {
             fs.mkdirSync(outDirPath);
         }
-        // 初始化或准备工作
         PwaAutoIconPlugin._generatePwaIcons();
     }
 
