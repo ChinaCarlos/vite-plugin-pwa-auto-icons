@@ -1,0 +1,1 @@
+# vite-plugin-pwa-auto-icons
