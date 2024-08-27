@@ -1,9 +1,8 @@
-import { Plugin } from 'vite';
 import sharp, { FormatEnum } from 'sharp';
 import fs from 'fs';
 import path from 'path';
 
-export const enum IMG_FORMAT_ENUM {
+const enum IMG_FORMAT_ENUM {
     PNG = 'png',
     WEBP = 'webp',
 }
@@ -50,7 +49,7 @@ const DEFAULT_ICON_PATH = `${cwd}/icon.png`;
 const DEFAULT_ICON_SIZES = [32, 48, 64, 72, 96, 128, 144, 192, 256, 512];
 const DEFAULT_CUSTOM_ICON_FILE_NAME = (size: number, format: IMG_FORMAT_ENUM) => `${size}x${size}.${format}`;
 
-class PwaAutoIconPlugin implements Plugin {
+class PwaAutoIconPlugin {
     public readonly name = PLUGIN_NAME;
     static outDir = DEFAULT_OUT_DIR;
     static iconPath = DEFAULT_ICON_PATH;
@@ -75,7 +74,7 @@ class PwaAutoIconPlugin implements Plugin {
     static _generatePwaIcons() {
         const outDirPath = path.join(cwd, PwaAutoIconPlugin.outDir);
 
-        PwaAutoIconPlugin.sizes.forEach(size => {
+        PwaAutoIconPlugin.sizes.forEach((size) => {
             const fileName = PwaAutoIconPlugin?.customIconFileName(size, PwaAutoIconPlugin.format);
             const outImgPath = path.join(outDirPath, fileName);
 
@@ -103,10 +102,10 @@ class PwaAutoIconPlugin implements Plugin {
 
             currentImgSharp
                 .toFile(outImgPath)
-                .then(file => {
+                .then((file) => {
                     console.log(`Saved: ${fileName}`, Number(file.size / 1024).toFixed(2) + 'kb');
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.error('Error processing image:', err);
                 });
         });
